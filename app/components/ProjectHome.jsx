@@ -18,11 +18,9 @@ const ProjectHome = () => {
 
   const animation = {
     hidden: {
-      x: 75,
       opacity: 0,
     },
     visible: {
-      x: 0,
       opacity: 1,
     },
   };
