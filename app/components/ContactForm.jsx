@@ -71,14 +71,11 @@ const ContactForm = () => {
           </div>
         </HeroAnimate>
       </div>
-      <form
-        ref={form}
-        className="w-[55%] flex flex-col gap-6 xl:w-full xs:items-center"
-        onSubmit={sendEmail}>
+      <form ref={form} className="w-[55%] flex flex-col gap-6 xl:w-full" onSubmit={sendEmail}>
         <HeroAnimate customDelay={1} customX={75}>
-          <div className="relative">
+          <div className="relative  ">
             <input
-              className="w-full p-6 rounded-lg bg-[--color-bg-variant] text-[--color-ligh] border outline-none focus:border-[--color-ligh] focus:border-solid valid:border-[--color-ligh] valid:border-solid peer"
+              className="p-6 w-full  rounded-lg bg-[--color-bg-variant] text-[--color-ligh] border outline-none focus:border-[--color-ligh] focus:border-solid valid:border-[--color-ligh] valid:border-solid peer"
               type="text"
               name="name"
               required
@@ -115,9 +112,10 @@ const ContactForm = () => {
           </div>
         </HeroAnimate>
         <HeroAnimate customDelay={4} customY={75}>
+          <div className="xs:text-center">
           <button type="submit" className="btn btn-custom_transparent ">
             Send Message
-          </button>
+          </button></div>
         </HeroAnimate>
       </form>
     </div>

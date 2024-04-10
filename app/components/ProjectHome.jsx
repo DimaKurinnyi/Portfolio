@@ -93,7 +93,7 @@ const ProjectHome = () => {
               </motion.div>
             ))}
       </motion.div>
-      <HeroAnimate customDelay={4} customY={75}>
+      <HeroAnimate customDelay={2} customY={75}>
         <Link href="/project" className="btn btn-custom_transparent">
           See more...
         </Link>
