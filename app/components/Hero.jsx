@@ -17,7 +17,7 @@ function Hero() {
             <GrInstagram size={20} style={{ color: '#4db5ff' }} />
           </a>
         </HeroAnimate>
-        <HeroAnimate customDelay={3}>
+        <HeroAnimate customDelay={3} >
           <a
             href="https://github.com/Xdimax1488"
             className="hover:scale-125"

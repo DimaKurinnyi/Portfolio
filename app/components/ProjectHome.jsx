@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchDate } from '../GlobalRedux/Features/data/dataSlice';
 import { HeroAnimate } from './Animations/HeroAnimate';
-import Skeleton from './skeletonss/ProjectSkeleton';
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
@@ -18,9 +17,11 @@ const ProjectHome = () => {
 
   const animation = {
     hidden: {
+      x: 75,
       opacity: 0,
     },
     visible: {
+      x: 0,
       opacity: 1,
     },
   };
@@ -54,45 +55,40 @@ const ProjectHome = () => {
       <HeroAnimate customDelay={1}>
         <h2 className="text-center text-[--color-ligh] font-medium text-2xl">Projects</h2>
       </HeroAnimate>
-      <motion.div
+      <div
         className="mt-12 flex items-center justify-center mb-12 flex-wrap"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}>
-        {isLoading
-          ? skeletons.map((_, index) => (
-              <div
-                key={index}
-                className="w-[30%] box relative  my-5 mx-4 p-5 border-solid border rounded-3xl border-[--color-bg-variant] bg-[--color-bg-variant]  hover:bg-transparent duration-300 ease-in-out smh:w-full lg:w-[45%]  ">
-                <Skeleton key={index} />
+        {date.slice(0, 3).map((item, i) => (
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={animation}
+            transition={{ duration: '1.5', delay: 0.5 * (i + 1) }}
+            key={i}
+            className="w-[30%]     my-5 mx-4  rounded-3xl   duration-300 ease-in-out smh:w-full lg:w-[45%] relative work overflow-hidden ">
+            <Image
+              className="rounded-3xl  h-[300px] "
+              src={item.imaje[0]}
+              alt="project_image"
+              width={500}
+              height={500}></Image>
+            <div className="work-bg">
+              <div className="font-medium text-xl mb-6">{item.description}</div>
+              <div className="flex items-center gap-4 justify-center">
+                <a href={item.git} className="btn btn-project">
+                  Github
+                </a>
+                <Link href="" className="btn btn-custom py-2 px-4">
+                  Demo
+                </Link>
               </div>
-            ))
-          : isError
-          ? 'error'
-          : date.slice(0, 3).map((item, i) => (
-              <motion.div
-                variants={animation}
-                transition={{ duration: '1.5', delay: 0.5 * (i + 1) }}
-                key={i}
-                className="w-[30%] box relative     my-5 mx-4 p-5 border-solid border rounded-3xl border-[--color-bg-variant] bg-[--color-bg-variant]  hover:bg-transparent duration-300 ease-in-out smh:w-full lg:w-[45%]  ">
-                <Image
-                  className="rounded-3xl mb-5 min-h-[300px]"
-                  src={item.imaje[0]}
-                  alt="project_image"
-                  width={500}
-                  height={500}></Image>
-                <div className="font-medium text-xl mb-6">{item.description}</div>
-                <div className="flex items-center gap-4 mb-4">
-                  <a href={item.git} className="btn btn-custom_transparent">
-                    Github
-                  </a>
-                  <Link href="" className="btn btn-custom py-2 px-4">
-                    Demo
-                  </Link>
-                </div>
-              </motion.div>
-            ))}
-      </motion.div>
+            </div>
+          </motion.div>
+        ))}
+      </div>
       <HeroAnimate customDelay={2} customY={75}>
         <Link href="/project" className="btn btn-custom_transparent">
           See more...

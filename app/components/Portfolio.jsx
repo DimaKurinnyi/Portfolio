@@ -1,4 +1,5 @@
 'use client';
+import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchDate } from '../GlobalRedux/Features/data/dataSlice';
@@ -77,18 +78,9 @@ const Portfolio = () => {
         </ul>
       </div>
 
-      <div className=" mt-12 flex items-center justify-center mb-12 flex-wrap">
-        {/* {isLoading
-        ? skeletons.map((_, index) => (
-            <div className="w-[30%] my-5 mx-4 p-5 border-solid border rounded-3xl border-[--color-bg-variant] bg-[--color-bg-variant] hover:border-[--color-ligh] hover:bg-transparent duration-300 ease-in-out smh:w-full lg:w-[45%]  ">
-              <Skeleton key={index} />
-            </div>
-          ))
-        : Error
-        ? 'error'
-        : */}
-        {projects && projectItems}
-      </div>
+      <motion.div className=" mt-12 grid grid-cols-[repeat(auto-fill,minmax(400px,1fr))] mb-12 gap-4 ">
+        {projectItems}
+      </motion.div>
     </div>
   );
 };
